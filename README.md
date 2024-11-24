@@ -1,4 +1,4 @@
-# ETL-to-Apache-Iceberg
+# ETL-to-object-storage-Iceberg
 
 
 
@@ -12,6 +12,6 @@
 | Node4    | MinIO node4      | 192.168.16.243    |
 | Node5    | Hive Metastore(HMS)  , HAProxy    | 192.168.16.244    |
 | Node6    | Trino Node1     | 192.168.16.245    |
-| Node7    | Trino Node2  MYSQL       | 192.168.16.246    |
-| Node8    | Trino Node3  Postgres  | 192.168.16.247    |
+| Node7    | Trino Node2 ,  MYSQL       | 192.168.16.246    |
+| Node8    | Trino Node3 ,  Postgres  | 192.168.16.247    |
 

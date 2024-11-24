@@ -1,5 +1,5 @@
 
-### steps to install HAProxy for Load balancing MinIO Cluster:
+### steps to install and config HAProxy for Load balancing MinIO Cluster:
 
 1.install HAProxy :
 ```
@@ -61,7 +61,7 @@ backend minio_console
 
 ```
 
-4.create new HAproxy config:
+4.Enable and start  HAproxy Service:
 
 ```
 sudo systemctl enable haproxy
@@ -70,7 +70,7 @@ sudo systemctl start haproxy
 
 sudo systemctl status haproxy
 
-#check exposed port
+#check exposed HAproxy ports
 
 ss -tupln | grep 1000
 ss -tupln | grep 1001

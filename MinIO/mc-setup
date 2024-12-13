@@ -1,0 +1,25 @@
+### steps to download and config minio client tool:
+
+1-downoad mc :
+
+```
+curl https://dl.min.io/client/mc/release/linux-amd64/mc \
+  --create-dirs \
+  -o $HOME/minio-binaries/mc
+
+chmod +x $HOME/minio-binaries/mc
+
+sudo mv $HOME/minio-binaries/mc /usr/local/bin/
+
+```
+
+2-set alias for minio cluster:
+
+```
+mc alias set minio http://node2:10000 adminminio adminminio
+```
+
+3-check MinIO cluster status:
+```
+mc admin info minio
+```

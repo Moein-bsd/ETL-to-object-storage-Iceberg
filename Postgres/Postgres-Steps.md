@@ -45,7 +45,7 @@ sudo sh -c "echo 'export PATH=$PATH:/usr/local/pgsql/bin' > /etc/profile.d/postg
 source /etc/profile.d/postgres.sh
 ```
 
-6- init database :
+5- init database :
 
 ```
 su postgres
@@ -56,10 +56,45 @@ nano /opt/postgresql/data/postgresql.conf
 
 su postgres -c "nano /opt/postgresql/data/postgresql.conf"
 
-/usr/local/pgsql/bin/pg_ctl -D  /opt/postgresql/data start
+/usr/local/pgsql/bin/pg_ctl -D  /opt/postgresql/data -l /opt/postgresql/logfile start
 #or
-su postgres -c "/usr/local/pgsql/bin/pg_ctl -D  /opt/postgresql/data start"
+su postgres -c "/usr/local/pgsql/bin/pg_ctl -D  /opt/postgresql/data  -l /opt/postgresql/logfile start"
 
 ```
 
+6-use systemd for create service :
 
+```
+sudo nano /usr/lib/systemd/system/postgresql.service
+
+```
+
+```
+// if you wanna use systemd create service file in 
+-> /usr/lib/systemd/system/ with this command
+4. sudo nano /usr/lib/systemd/system/postgresql.service
+5. fill the file with this script
+
+[Unit]
+Description=PostgreSQL database server
+Documentation=man:postgres(1)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+User=postgres
+ExecStart=/usr/local/pgsql/bin/postgres -D  /opt/postgresql/data  -l /opt/postgresql/logfile
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStop=/usr/local/pgsql/bin/pg_ctl stop -D  /opt/postgresql/data  -l /opt/postgresql/logfile
+
+KillMode=mixed
+KillSignal=SIGINT
+TimeoutSec=infinity
+RuntimeDirectory=postgresql
+
+[Install]
+WantedBy=multi-user.target
+```
+6. run:
+sudo systemctl daemon-reload

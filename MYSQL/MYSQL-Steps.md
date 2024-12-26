@@ -1,10 +1,10 @@
 
-### steps to deploy and config MUSQL (as Data Source and HMS Database):
+### steps to deploy and config MYSQL (as Data Source and HMS Database):
 
 1-Download and install MYSQL source package :
 
 ```
-sudo mkdir /opt/mysql
+sudo mkdir -p  /opt/mysql
 cd /opt/mysql
 
 sudo wget https://downloads.mysql.com/archives/get/p/23/file/mysql-server_8.4.0-1ubuntu22.04_amd64.deb-bundle.tar

@@ -1,10 +1,10 @@
 
 
-### steps to deploy and config MUSQL (as Data Source):
+### steps to deploy and config postgresql (as Data Source):
 
 1-Install Prerequisites on Linux
 ```
-sudo apt install gcc build-essential zlib1g-dev libreadline6-dev libicu-dev pkg-config
+sudo apt install  -y gcc build-essential zlib1g-dev libreadline6-dev libicu-dev pkg-config libssl-dev libsystemd-dev
 
 ```
 2-Download and install MYSQL source package :
@@ -13,14 +13,19 @@ sudo apt install gcc build-essential zlib1g-dev libreadline6-dev libicu-dev pkg-
 sudo mkdir  -p  /opt/postgresql/
 cd /opt/postgresql/
 
-wget https://ftp.postgresql.org/pub/source/v16.6/postgresql-16.6.tar.gz
+sudo wget https://ftp.postgresql.org/pub/source/v16.6/postgresql-16.6.tar.gz
 
-tar -xzf postgresql-16.6.tar.gz
+sudo tar -xzf postgresql-16.6.tar.gz
 cd postgresql-16.6/
 
 ll
 
-sudo ./configure
+
+# --with-systemd This option enables integration with systemd, allowing PostgreSQL to use systemd features for managing the service.
+# --with-openssl  This option enables support for SSL
+
+sudo ./configure --with-openssl  --with-systemd
+
 make
 sudo make install
 ```
@@ -35,14 +40,11 @@ sudo passwd postgres
 
 ```
 sudo mkdir -p /opt/postgresql/data
+sudo mkdir -p /opt/postgresql/
+touch /opt/postgresql/logfile
+sudo chown  postgres: /opt/postgresql/logfile
+sudo chmod 600 /opt/postgresql/logfile
 sudo chown -R postgres: /opt/postgresql/data
-```
-
-5- add postgres to PATH :
-
-```
-sudo sh -c "echo 'export PATH=$PATH:/usr/local/pgsql/bin' > /etc/profile.d/postgres.sh"
-source /etc/profile.d/postgres.sh
 ```
 
 5- init database :
@@ -51,14 +53,13 @@ source /etc/profile.d/postgres.sh
 su postgres
 /usr/local/pgsql/bin/initdb -D /opt/postgresql/data -U postgres -W
 nano /opt/postgresql/data/postgresql.conf
-
 #or
-
 su postgres -c "nano /opt/postgresql/data/postgresql.conf"
 
-/usr/local/pgsql/bin/pg_ctl -D  /opt/postgresql/data -l /opt/postgresql/logfile start
+#-l /opt/postgresql/logfile
+/usr/local/pgsql/bin/pg_ctl -D  /opt/postgresql/data  start
 #or
-su postgres -c "/usr/local/pgsql/bin/pg_ctl -D  /opt/postgresql/data  -l /opt/postgresql/logfile start"
+su postgres -c "/usr/local/pgsql/bin/pg_ctl -D  /opt/postgresql/data  start"
 
 ```
 
@@ -67,34 +68,17 @@ su postgres -c "/usr/local/pgsql/bin/pg_ctl -D  /opt/postgresql/data  -l /opt/po
 ```
 sudo nano /usr/lib/systemd/system/postgresql.service
 
-```
+#copy my postgresql.service
 
 ```
-// if you wanna use systemd create service file in 
--> /usr/lib/systemd/system/ with this command
-4. sudo nano /usr/lib/systemd/system/postgresql.service
-5. fill the file with this script
 
-[Unit]
-Description=PostgreSQL database server
-Documentation=man:postgres(1)
-After=network-online.target
-Wants=network-online.target
 
-[Service]
-Type=notify
-User=postgres
-ExecStart=/usr/local/pgsql/bin/postgres -D  /opt/postgresql/data  -l /opt/postgresql/logfile
-ExecReload=/bin/kill -HUP $MAINPID
-ExecStop=/usr/local/pgsql/bin/pg_ctl stop -D  /opt/postgresql/data  -l /opt/postgresql/logfile
+7- run:
 
-KillMode=mixed
-KillSignal=SIGINT
-TimeoutSec=infinity
-RuntimeDirectory=postgresql
-
-[Install]
-WantedBy=multi-user.target
 ```
-6. run:
 sudo systemctl daemon-reload
+sudo systemctl status  postgresql
+sudo systemctl start  postgresql
+```
+
+

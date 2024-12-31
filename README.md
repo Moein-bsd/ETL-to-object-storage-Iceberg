@@ -1,5 +1,6 @@
 # ETL-to-object-storage-Iceberg
 
+![My Image](Images/Architecture-ETL-Iceberg.png)
 
 
 

@@ -53,4 +53,11 @@ cd /opt/apache-hive-3.1.3-bin/bin
 
 ```
 
+5- Start Hive Metastore
+
+```
+/opt/apache-hive-3.1.3-bin/bin/hive --service metastore
+
+```
+
 

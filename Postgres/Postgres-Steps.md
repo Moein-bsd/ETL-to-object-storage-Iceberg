@@ -52,18 +52,15 @@ sudo chown -R postgres: /opt/postgresql/data
 ```
 su postgres
 /usr/local/pgsql/bin/initdb -D /opt/postgresql/data -U postgres -W
-nano /opt/postgresql/data/postgresql.conf
-#or
-su postgres -c "nano /opt/postgresql/data/postgresql.conf"
 
-#-l /opt/postgresql/logfile
+
 /usr/local/pgsql/bin/pg_ctl -D  /opt/postgresql/data  start
 #or
 su postgres -c "/usr/local/pgsql/bin/pg_ctl -D  /opt/postgresql/data  start"
 
 ```
 
-6-use systemd for create service :
+6-use systemd for create service **:
 
 ```
 sudo nano /usr/lib/systemd/system/postgresql.service
@@ -71,14 +68,42 @@ sudo nano /usr/lib/systemd/system/postgresql.service
 #copy my postgresql.service
 
 ```
+7-config Network postgresql :
+
+```
+su postgres -c "nano /opt/postgresql/data/postgresql.conf"
+#modify listen_addresses = 'yourt_IP'     # what IP address(es) to listen on;
 
 
-7- run:
+su postgres -c  "nano /opt/postgresql/data//pg_hba.conf "
+#copy my pg_hba.conf
+
+
+
+```
+
+8- run:
 
 ```
 sudo systemctl daemon-reload
 sudo systemctl status  postgresql
 sudo systemctl start  postgresql
 ```
+
+9- connect to Postgres and create source database :
+```
+psql -Upostgres
+
+CREATE DATABASE source2;
+CREATE USER psq  WITH PASSWORD '123';
+\c source2;
+CREATE SCHEMA info;
+GRANT ALL PRIVILEGES ON DATABASE source2 TO psq;
+GRANT ALL PRIVILEGES ON SCHEMA info TO psq;
+
+
+
+```
+
 
 

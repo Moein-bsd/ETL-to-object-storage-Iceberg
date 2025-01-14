@@ -52,6 +52,7 @@ sudo systemctl reload apparmor
 sudo systemctl reload apparmor
 
 
+
 sudo systemctl start mysql.service
 
 rm -rf /var/lib/mysql

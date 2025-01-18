@@ -49,27 +49,45 @@ sudo nano /etc/apparmor.d/usr.sbin.mysqld
 
 sudo systemctl reload apparmor
 
-sudo systemctl reload apparmor
+
+```
 
 
+3-Start Mysql Service and remove old data directory :
 
+```
 sudo systemctl start mysql.service
 
 rm -rf /var/lib/mysql
+
 ```
 
 
 
-
-3-create user and database for HMS:
+4-create user and database for HMS:
 
 ```
 mysql -u root -p
 
+#hive metadata
+
 CREATE USER 'hive'@'node5' IDENTIFIED BY '123';
 GRANT ALL PRIVILEGES ON hive_meta.* TO 'hive'@'node5' WITH GRANT OPTION;
-
 create database hive_meta;
+
+
+#trino cluster 
+CREATE USER 'trino'@'node6' IDENTIFIED BY '123';
+CREATE USER 'trino'@'node7' IDENTIFIED BY '123';
+CREATE USER 'trino'@'node8' IDENTIFIED BY '123';
+
+GRANT ALL PRIVILEGES ON *.* TO 'trino'@'node6' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'trino'@'node7' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'trino'@'node8' WITH GRANT OPTION;
+
+#for source data
+CREATE DATABASE source1;
+
 
 ```
 

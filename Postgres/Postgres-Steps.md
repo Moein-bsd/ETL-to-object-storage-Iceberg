@@ -75,7 +75,7 @@ su postgres -c "nano /opt/postgresql/data/postgresql.conf"
 #modify listen_addresses = 'yourt_IP'     # what IP address(es) to listen on;
 
 
-su postgres -c  "nano /opt/postgresql/data//pg_hba.conf "
+su postgres -c  "nano /opt/postgresql/data/pg_hba.conf "
 #copy my pg_hba.conf
 
 

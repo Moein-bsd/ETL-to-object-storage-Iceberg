@@ -1,0 +1,15 @@
+{
+    "name": "postgres-connector-source2",  
+    "config": {
+      "connector.class": "io.debezium.connector.postgresql.PostgresConnector", 
+      "database.hostname": "node8", 
+      "database.port": "5432", 
+      "database.user": "debezium", 
+      "database.password": "123", 
+      "database.dbname" : "source2", 
+      "topic.prefix": "psq-perfix", 
+      "plugin.name": "pgoutput",
+      "table.include.list": "info.information_tbl" 
+  
+    }
+  }

@@ -68,11 +68,22 @@ sudo nano /usr/lib/systemd/system/postgresql.service
 #copy my postgresql.service
 
 ```
-7-config Network postgresql :
+7-config Network and logical decoding postgresql :
 
 ```
 su postgres -c "nano /opt/postgresql/data/postgresql.conf"
+#in CONNECTIONS AND AUTHENTICATION
 #modify listen_addresses = 'yourt_IP'     # what IP address(es) to listen on;
+
+#in WRITE-AHEAD LOG
+#change #wal_level = replica  to wal_level = logical and uncomment it ;
+#wal_level = logical
+
+
+
+# use logical decoding with the write-ahead log:
+
+
 
 
 su postgres -c  "nano /opt/postgresql/data/pg_hba.conf "

@@ -34,7 +34,7 @@
  
 
  
- 5.clustering kafka nodes: 
+ 5.clustering kafka nodes:
 
 ```
  #in kafka node1:
@@ -46,3 +46,5 @@
  kafka-storage.sh format -t yR2oLObjQlONvUxLxuHSUA <your_UUID> -c  /home/moein/kafka-3.8.1/kafka_2.13-3.8.1/config/kraft/server.properties
  
  ```
+
+ 

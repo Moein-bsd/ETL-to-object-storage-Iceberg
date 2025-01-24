@@ -23,8 +23,9 @@ nano ../config/connect-distributed.properties
  ```
 
 > [!IMPORTANT]
-> check Debezium version Compatibility with your MySQL version ( for me =mysql versiom is 8.4 and postgresql is 16.6  ;) ).
+> check Debezium version Compatibility with your MySQL and Postgresql  version ( for me =mysql versiom is 8.4 and postgresql is 16.6  ;) ).
 > https://debezium.io/releases/
+
 
 
 2- Run kafka connect and verify that:
@@ -68,7 +69,8 @@ curl -s http://node1:8083/connector-plugins | jq
 
  ```
 
-3- create connection :
+
+3- Create connection :
 
 ```
 curl -X POST -H "Content-Type: application/json" --data @mysql-connector.json http://node1:8083/connectors
@@ -76,7 +78,7 @@ curl -X POST -H "Content-Type: application/json" --data @postgres-connector.json
 
 ```
 
-4- get list all connectors:
+4- Get list all connectors:
 ```
  curl -s http://node1:8083/connectors | jq
 
@@ -87,6 +89,7 @@ curl -X POST -H "Content-Type: application/json" --data @postgres-connector.json
 
 
 ```
+
 5- Delete connection(Just for knowledge): 
 ```
 curl -X DELETE http://node1:8083/connectors/mysql-connector-source1
@@ -94,7 +97,7 @@ curl -X DELETE http://node1:8083/connectors/mysql-connector-source1
 
 ```
 
-6-Create topics for mysql source table and postres:
+6-Create topics for mysql source table and postgres:
 ```
 kafka-topics.sh --bootstrap-server node1:9092,node2:9092,node3:9092 --create  --topic mysql-perfix.source1.financial_tbl --replication-factor 3 --partitions 3
 

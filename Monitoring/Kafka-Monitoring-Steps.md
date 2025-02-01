@@ -10,9 +10,7 @@ cd /opt/monitoring
 mkdir  grafana
 sudo chown -R 472:472 grafana/
 
-
 tree /opt/monitoring
-
 .
 ├── docker-compose.yml
 ├── grafana
@@ -22,10 +20,9 @@ tree /opt/monitoring
 
 ```
 
-
-3- Run Docker compose file:
+2- Run Docker compose file:
 ```
- docker compose up -d
+docker compose up -d
 
 
 ```

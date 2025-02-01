@@ -1,0 +1,27 @@
+[Unit]
+Description=Apache Kafka Server (KRaft)
+Documentation=https://kafka.apache.org/documentation/
+After=network.target syslog.target
+Requires=network.target
+
+
+[Service]
+User=moein
+Group=moein
+
+Environment=JAVA_HOME=/home/java/jdk-17.0.10
+Environment="KAFKA_OPTS=-javaagent:/home/moein/kafka-3.8.1/jmx_prometheus_javaagent-1.1.0.jar=8090:/home/moein/kafka-3.8.1/kafka-kraft-3_0_0.yml"
+
+ExecStart=/home/moein/kafka-3.8.1/kafka_2.13-3.8.1/bin/kafka-server-start.sh  /home/moein/kafka-3.8.1/kafka_2.13-3.8.1/config/kraft/server.properties
+ExecStop=/home/moein/kafka-3.8.1/kafka_2.13-3.8.1/bin/kafka-server-stop.sh
+
+
+# Failure Handling
+SuccessExitStatus=0 143
+Restart=on-failure
+RestartSec=10
+
+
+
+[Install]
+WantedBy=multi-user.target

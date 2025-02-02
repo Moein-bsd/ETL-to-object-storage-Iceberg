@@ -16,3 +16,20 @@
 | Node7    | Trino Node2 ,  MYSQL       | 192.168.16.246    |
 | Node8    | Trino Node3 ,  Postgres  | 192.168.16.247    |
 
+
+
+
+### Stack version
+
+  - MinIO version: RELEASE.2024-07-16T23-46-41Z
+  - Kafka cluster: Kafka 3.8.1
+  - MYSQL version : 8.4
+  - Postgresql : 16.6
+  - Trino : 455
+  - Apache Hive : 3.1.3
+  - Apache Spark: 3.5.1
+  - Prometheus version: v3.0.0
+  - Grafana version: 11.3.1
+  - jmx_exporter version: 1.1.0
+
+

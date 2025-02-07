@@ -6,5 +6,4 @@
  mysql -uroot -D source1  -p < financial_tbl0-1.sql
 
 
-
 ```

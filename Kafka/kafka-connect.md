@@ -1,5 +1,5 @@
 
-### steps to config Kafka Cluster + debeziu :
+### steps to config Kafka Cluster + debezium :
 
 1-setup kafka connect :
 

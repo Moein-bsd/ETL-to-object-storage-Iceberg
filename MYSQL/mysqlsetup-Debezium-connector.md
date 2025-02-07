@@ -16,6 +16,7 @@ GRANT SELECT, RELOAD, SHOW DATABASES, REPLICATION SLAVE, REPLICATION CLIENT ON *
 FLUSH PRIVILEGES;
 
 ```
+
 2-Check whether the log-bin option is enabled:
 
 ```

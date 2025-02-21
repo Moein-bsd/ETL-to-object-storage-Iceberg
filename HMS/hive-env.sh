@@ -48,7 +48,7 @@
 # HADOOP_HOME=${bin}/../../hadoop
 
 export HADOOP_HEAPSIZE=1024
-export HIVE_CONF_DIR=/opt/apache-hive-3.1.3-bin/conf
+export HIVE_CONF_DIR=/opt/apache-hive-4.0.0-bin/conf
 
 
 # Hive Configuration Directory can be controlled by:

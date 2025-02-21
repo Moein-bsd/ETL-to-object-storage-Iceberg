@@ -27,7 +27,7 @@
   - MYSQL version : 8.4
   - Postgresql : 16.6
   - Trino : 455
-  - Apache Hive : 3.1.3
+  - Apache Hive : 4.0.0
   - Apache Spark: 3.5.1
   - Prometheus version: v3.0.0
   - Grafana version: 11.3.1

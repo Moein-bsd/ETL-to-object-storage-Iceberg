@@ -1,4 +1,4 @@
-### steps to download and config minio client tool:
+### Steps to download and config minio client tool:
 
 1-downoad mc :
 
@@ -22,4 +22,11 @@ mc alias set minio http://node2:10000 adminminio adminminio
 3-check MinIO cluster status:
 ```
 mc admin info minio
+```
+
+### Create our buckets minio client tool:
+```
+mc mb   minio/bronze
+mc mb   minio/silver
+mc mb   minio/gold
 ```

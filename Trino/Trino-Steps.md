@@ -14,11 +14,14 @@
 1-Download and extrct it :
 ```
  sudo mkdir /opt/trino
+ sudo chown moein:moein trino
  cd /opt/trino
 
 wget https://repo1.maven.org/maven2/io/trino/trino-server/455/trino-server-455.tar.gz
 
 sudo tar -xzf trino-server-455.tar.gz
+
+ 
 ```
 2-create a symbolic link for python :
 ```
@@ -29,7 +32,7 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 3-download  Trino cli file :
 ```
 sudo wget https://repo1.maven.org/maven2/io/trino/trino-cli/455/trino-cli-455-executable.jar
-sudo chmod  -R o+w   trino/
+
 
 
 ```

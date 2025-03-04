@@ -5,6 +5,7 @@
         "database.hostname": "node7",
         "database.port": "3306",
         "database.user": "debezium",
+        "snapshot.mode": "initial",
         "database.password": "123",
         "database.server.id": "184054",
         "database.server.name": "mysql",

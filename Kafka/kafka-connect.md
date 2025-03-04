@@ -101,7 +101,12 @@ curl -X DELETE http://node1:8083/connectors/mysql-connector-source1
 ```
 kafka-topics.sh --bootstrap-server node1:9092,node2:9092,node3:9092 --create  --topic mysql-perfix.source1.financial_tbl --replication-factor 3 --partitions 3
 
+
+#Create the Schema History Topic for mysql
+kafka-topics.sh --bootstrap-server node1:9092,node2:9092,node3:9092 --create --topic schemahistory-mysql --replication-factor 3 --partitions 3
+
 kafka-topics.sh --bootstrap-server node1:9092,node2:9092,node3:9092 --create   --topic psq-perfix.info.information_tbl  --replication-factor 3 --partitions 3
+
 
 
 ```

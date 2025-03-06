@@ -37,9 +37,9 @@ export AWS_ACCESS_KEY_ID="Ye20hXPlsCGTV4wQYJm8"
 export AWS_SECRET_ACCESS_KEY="ndWDf6BiGPE1ikjwLmCN8UXHUzrHFYDr09484eCU"
 
 
- spark-submit --conf "spark.log.level=WARN"   spark-cdc-mysql-iceberg.py
+spark-submit --conf "spark.log.level=WARN"   spark-cdc-mysql-iceberg.py
 
-
+spark-submit --conf "spark.log.level=WARN" spark-cdc-postgres-iceberg.py
 ```
 
 

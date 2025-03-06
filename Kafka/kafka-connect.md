@@ -84,9 +84,9 @@ curl -X POST -H "Content-Type: application/json" --data @postgres-connector.json
 
 
 [
+  "postgres-connector-source2",
   "mysql-connector-source1"
 ]
-
 
 ```
 
